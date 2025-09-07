@@ -18,7 +18,7 @@ def ball_movement():
         ball_speed_y = speed * random.choice((1, -1))  # Randomize initial vertical direction
         start = False
         background_effect = pygame.mixer.Sound ('music_BTDAT.mp3') # Background music starts
-        background_effect.play()
+        background_effect.play(loops=-1)
     # Ball collision with the player paddle
     if ball.colliderect(player):
         if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
