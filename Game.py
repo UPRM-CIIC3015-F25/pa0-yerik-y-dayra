@@ -41,7 +41,7 @@ def ball_movement():
     # Ball goes below the bottom boundary (missed by player)
     if ball.bottom > screen_height:
         restart()  # Reset the game
-        pygame.mixer.stop() #Background music stops
+        pygame.mixer.stop() # Background music stops
 def player_movement():
     """
     Handles the movement of the player paddle, keeping it within the screen boundaries.
