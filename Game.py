@@ -17,16 +17,18 @@ def ball_movement():
         ball_speed_x = speed * random.choice((1, -1))  # Randomize initial horizontal direction
         ball_speed_y = speed * random.choice((1, -1))  # Randomize initial vertical direction
         start = False
-
+        background_effect = pygame.mixer.Sound ('music_BTDAT.mp3') # Background music starts
+        background_effect.play()
     # Ball collision with the player paddle
     if ball.colliderect(player):
         if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
             # TODO Task 2: Fix score to increase by 1
-            score += 1  # Increase player score
+            score += 1  # Increase player score fixed
             ball_speed_y *= -1  # Reverse ball's vertical direction
-            sound_effect = pygame.mixer.Sound('villager.mp3')
-            sound_effect.play()
+
             # TODO Task 6: Add sound effects HERE
+            sound_effect = pygame.mixer.Sound('villager.mp3')  # Added sound effect
+            sound_effect.play()
 
     # Ball collision with top boundary
     if ball.top <= 0:
@@ -39,7 +41,7 @@ def ball_movement():
     # Ball goes below the bottom boundary (missed by player)
     if ball.bottom > screen_height:
         restart()  # Reset the game
-
+        pygame.mixer.stop() #Background music stops
 def player_movement():
     """
     Handles the movement of the player paddle, keeping it within the screen boundaries.
@@ -79,7 +81,7 @@ bg_color = pygame.Color('grey12')
 ball = pygame.Rect(screen_width / 2 - 15, screen_height / 2 - 15, 30, 30)  # Ball (centered)
 # TODO Task 1 Make the paddle bigger
 player_height = 15
-player_width = 200
+player_width = 200 # Changed paddle from 100 to 200
 player = pygame.Rect(screen_width/2 - 45, screen_height - 20, player_width, player_height)  # Player paddle
 
 # Game Variables
@@ -126,7 +128,7 @@ while True:
     screen.fill(bg_color)  # Clear screen with background color
     pygame.draw.rect(screen, light_grey, player)  # Draw player paddle
     # TODO Task 3: Change the Ball Color
-    pygame.draw.ellipse(screen, light_golden_rod, ball)  # Draw ball
+    pygame.draw.ellipse(screen, light_golden_rod, ball)  # Draw ball (Changed color to light gold)
     player_text = basic_font.render(f'{score}', False, light_grey)  # Render player score
     screen.blit(player_text, (screen_width/2 - 15, 10))  # Display score on screen
 
