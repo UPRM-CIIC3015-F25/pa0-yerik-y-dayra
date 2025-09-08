@@ -1,4 +1,7 @@
+import os
+
 import pygame, sys, random
+# Adding Background
 
 def ball_movement():
     """
@@ -80,7 +83,7 @@ screen_height = 500  # Screen height (can be adjusted)
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Pong')  # Set window title
 
-# Colors
+#Colors
 bg_color = pygame.Color('grey12')
 
 # Game Rectangles (ball and player paddle)
@@ -131,13 +134,15 @@ while True:
     light_grey = pygame.Color('grey83')
     red = pygame.Color('red')
     light_golden_rod = pygame.Color('light golden rod1')
-    screen.fill(bg_color)  # Clear screen with background color
-    pygame.draw.rect(screen, light_grey, player)  # Draw player paddle
+    # Background
+    background_image = pygame.image.load('firekingdom.jpg') #Background setup
+    background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+    screen.blit(background_image, (0, 0))
     # TODO Task 3: Change the Ball Color
-    pygame.draw.ellipse(screen, light_golden_rod, ball)  # Draw ball (Changed color to light gold)
-    player_text = basic_font.render(f'{score}', False, light_grey)  # Render player score
-    screen.blit(player_text, (screen_width/2 - 15, 10))  # Display score on screen
-
+    pygame.draw.rect(screen, light_grey, player)  # Player paddle
+    pygame.draw.ellipse(screen, light_golden_rod, ball)  # Ball
+    player_text = basic_font.render(f'{score}', False, light_grey)
+    screen.blit(player_text, (screen_width / 2 - 15, 10))
     # Update display
     pygame.display.flip()
     clock.tick(60)  # Maintain 60 frames per second
