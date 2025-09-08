@@ -134,15 +134,12 @@ while True:
     light_grey = pygame.Color('grey83')
     red = pygame.Color('red')
     light_golden_rod = pygame.Color('light golden rod1')
-    # Background
-    background_image = pygame.image.load('firekingdom.jpg') #Background setup
-    background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
-    screen.blit(background_image, (0, 0))
+    screen.fill(bg_color)
+    pygame.draw.rect(screen,light_grey,player)
     # TODO Task 3: Change the Ball Color
-    pygame.draw.rect(screen, light_grey, player)  # Player paddle
     pygame.draw.ellipse(screen, light_golden_rod, ball)  # Ball
     player_text = basic_font.render(f'{score}', False, light_grey)
-    screen.blit(player_text, (screen_width / 2 - 15, 10))
+    screen.blit(player_text, (screen_width / 2 - 15, 10))# Display Score on screen
     # Update display
     pygame.display.flip()
     clock.tick(60)  # Maintain 60 frames per second
