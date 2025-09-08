@@ -12,7 +12,8 @@ def ball_movement():
 
     # Start the ball movement when the game begins
     # TODO Task 5 Create a Merge Conflict
-    speed = 10
+    speed = 7
+    max_speed = 30
     if start:
         ball_speed_x = speed * random.choice((1, -1))  # Randomize initial horizontal direction
         ball_speed_y = speed * random.choice((1, -1))  # Randomize initial vertical direction
@@ -25,6 +26,11 @@ def ball_movement():
             # TODO Task 2: Fix score to increase by 1
             score += 1  # Increase player score fixed
             ball_speed_y *= -1  # Reverse ball's vertical direction
+            # Increase ball speed when hits paddle
+            ball_speed_x *= 1.1
+            ball_speed_y *= 1.1
+            ball_speed_x = max(-max_speed, min(max_speed, ball_speed_x))
+            ball_speed_y = max(-max_speed, min(max_speed, ball_speed_y))
 
             # TODO Task 6: Add sound effects HERE
             sound_effect = pygame.mixer.Sound('villager.mp3')  # Added sound effect
