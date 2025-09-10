@@ -12,7 +12,7 @@ def ball_movement():
 
     # Start the ball movement when the game begins
     # TODO Task 5 Create a Merge Conflict
-    speed = 7
+    speed = 8
     max_speed = 30
     if start:
         ball_speed_x = speed * random.choice((1, -1))  # Randomize initial horizontal direction
@@ -27,7 +27,7 @@ def ball_movement():
             score += 1  # Increase player score fixed
             ball_speed_y *= -1  # Reverse ball's vertical direction
             # Increase ball speed when hits paddle
-            ball_speed_x *= 1.2
+            ball_speed_x *= 1.1
             ball_speed_y *= 1.1
             ball_speed_x = max(-max_speed, min(max_speed, ball_speed_x))
             ball_speed_y = max(-max_speed, min(max_speed, ball_speed_y))
